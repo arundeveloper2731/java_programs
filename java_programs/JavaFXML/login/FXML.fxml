@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="login.FXMLController">
+    <stylesheets>
+        <URL value="@fxml.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="148.0" layoutY="125.0" text=" USER NAME  :" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="152.0" layoutY="173.0" text="PASSWORD  :" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userName" layoutX="291.0" layoutY="126.0" prefHeight="25.0" prefWidth="190.0" text="ENTER YOUR USERNAME" />
+      <PasswordField fx:id="password" layoutX="291.0" layoutY="174.0" prefHeight="25.0" prefWidth="190.0" text="Enter password" />
+      <Button fx:id="login" layoutX="429.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleLogin" styleClass="mainFxmlClass" text="Login" />
+      <Label fx:id="message" layoutX="97.0" layoutY="277.0" text="Login sucssfully" />
+   </children>
+</AnchorPane>
