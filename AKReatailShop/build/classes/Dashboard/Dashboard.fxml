@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="900" prefWidth="1400"
+            style="-fx-background-color:#F8F7F3;"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Dashboard.DashboardController">
+
+   <!-- 🔹 SIDEBAR -->
+   <left>
+      <VBox prefWidth="260" style="-fx-background-color:#12121A;">
+         <padding>
+            <Insets top="30" left="20" right="20" bottom="30"/>
+         </padding>
+
+         <children>
+
+            <!-- LOGO -->
+            <HBox spacing="10">
+               <children>
+                  <StackPane prefHeight="35" prefWidth="35"
+                             style="-fx-background-color:#FF6B35; -fx-background-radius:8;"/>
+                  <Label text="AK Retail Shop" textFill="WHITE">
+                     <font><Font size="18"/></font>
+                  </Label>
+               </children>
+               <VBox.margin><Insets bottom="40"/></VBox.margin>
+            </HBox>
+
+            <!-- MENU -->
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+
+               <Button text="Dashboard" maxWidth="Infinity"
+                       style="-fx-background-color:#FF6B35; -fx-text-fill:white;"/>
+
+               <Button text="Products" onAction="#goToProducts"
+                       maxWidth="Infinity"
+                       style="-fx-background-color:transparent; -fx-text-fill:#8A8A93;"/>
+
+            </VBox>
+
+         </children>
+      </VBox>
+   </left>
+
+   <!-- 🔹 CENTER -->
+   <center>
+      <ScrollPane fitToWidth="true" style="-fx-background-color:transparent;">
+         <content>
+
+            <VBox spacing="25">
+               <padding>
+                  <Insets top="30" left="40" right="40" bottom="30"/>
+               </padding>
+
+               <children>
+
+                  <!-- ✅ HEADER WITH LOGOUT -->
+                  <HBox alignment="CENTER_LEFT" spacing="10">
+
+                     <!-- LEFT TEXT -->
+                     <VBox HBox.hgrow="ALWAYS">
+                        <children>
+                           <Label text="Good Morning, AK">
+                              <font><Font size="24"/></font>
+                           </Label>
+                           <Label text="Madurai Branch" textFill="#8A8A93"/>
+                        </children>
+                     </VBox>
+
+                     <!-- SEARCH -->
+                     <TextField prefHeight="40" prefWidth="250"
+                                promptText="Search products..."
+                                style="-fx-background-radius:10;
+                                       -fx-border-radius:10;
+                                       -fx-border-color:#E2E2E9;
+                                       -fx-background-color:white;"/>
+
+                     <!-- 🔴 LOGOUT BUTTON -->
+                     <Button text="Logout"
+                             onAction="#handleLogout"
+                             prefHeight="40"
+                             style="-fx-background-color:#FF4D4D;
+                                    -fx-text-fill:white;
+                                    -fx-font-weight:bold;
+                                    -fx-background-radius:10;"/>
+
+                  </HBox>
+
+                  <!-- CARD -->
+                  <HBox spacing="20">
+                     <VBox prefWidth="250"
+                           style="-fx-background-color:white; -fx-background-radius:15; -fx-border-color:#E2E2E9;">
+                        <padding><Insets top="20" left="20" right="20" bottom="20"/></padding>
+                        <children>
+                           <Label fx:id="revenueLabel" text="₹0">
+                              <font><Font size="22"/></font>
+                           </Label>
+                           <Label text="Today's Revenue" textFill="#8A8A93"/>
+                        </children>
+                     </VBox>
+                  </HBox>
+
+                  <!-- CHART -->
+                  <VBox style="-fx-background-color:white; -fx-background-radius:15; -fx-border-color:#E2E2E9;">
+                     <padding><Insets top="20" left="20" right="20" bottom="20"/></padding>
+
+                     <children>
+                        <Label text="Revenue Overview">
+                           <font><Font size="16"/></font>
+                        </Label>
+
+                        <AreaChart fx:id="revenueChart" prefHeight="300" createSymbols="false">
+                           <xAxis>
+                              <CategoryAxis label="Month"/>
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis label="Revenue"/>
+                           </yAxis>
+                        </AreaChart>
+
+                     </children>
+                  </VBox>
+
+               </children>
+            </VBox>
+
+         </content>
+      </ScrollPane>
+   </center>
+
+</BorderPane>

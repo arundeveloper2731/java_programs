@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Signup.SignupController">
+
+    <children>
+
+        <!-- LEFT PANEL -->
+
+        <VBox prefWidth="420"
+              spacing="20"
+              alignment="CENTER_LEFT"
+              style="-fx-background-color:#12121A; -fx-padding:60;"
+              HBox.hgrow="ALWAYS">
+
+            <children>
+
+                <Label text="AK MOBILE RETAIL SHOP"
+                       style="-fx-text-fill:white; -fx-font-size:28; -fx-font-weight:bold;"/>
+
+                <Label text="Start your retail journey today."
+                       wrapText="true"
+                       style="-fx-text-fill:#AAAAAA; -fx-font-size:14;"/>
+
+                <VBox spacing="10">
+
+                    <Label text="✓ POS Billing System"
+                           style="-fx-text-fill:white;"/>
+
+                    <Label text="✓ Inventory Management"
+                           style="-fx-text-fill:white;"/>
+
+                    <Label text="✓ Customer Database"
+                           style="-fx-text-fill:white;"/>
+
+                    <Label text="✓ Sales Analytics"
+                           style="-fx-text-fill:white;"/>
+
+                </VBox>
+
+            </children>
+
+        </VBox>
+
+
+        <!-- RIGHT SIGNUP FORM -->
+
+        <ScrollPane fitToWidth="true"
+                    HBox.hgrow="ALWAYS"
+                    style="-fx-background-color:white;">
+
+            <content>
+
+                <VBox spacing="20"
+                      alignment="CENTER"
+                      maxWidth="500"
+                      style="-fx-padding:60;">
+
+                    <children>
+
+                        <Label text="Create your account"
+                               style="-fx-font-size:26; -fx-font-weight:bold;"/>
+
+
+                        <!-- NAME -->
+
+                        <HBox spacing="10">
+
+                            <TextField fx:id="firstNameField"
+                                       promptText="First Name"
+                                       prefHeight="40"
+                                       maxWidth="Infinity"
+                                       HBox.hgrow="ALWAYS"/>
+
+                            <TextField fx:id="lastNameField"
+                                       promptText="Last Name"
+                                       prefHeight="40"
+                                       maxWidth="Infinity"
+                                       HBox.hgrow="ALWAYS"/>
+
+                        </HBox>
+
+
+                        <!-- MOBILE -->
+
+                        <TextField fx:id="mobileField"
+                                   promptText="Mobile Number"
+                                   prefHeight="40"
+                                   maxWidth="Infinity"/>
+
+
+                        <!-- EMAIL -->
+
+                        <TextField fx:id="emailField"
+                                   promptText="Email Address"
+                                   prefHeight="40"
+                                   maxWidth="Infinity"/>
+
+
+                        <!-- PASSWORD -->
+
+                        <PasswordField fx:id="passwordField"
+                                       promptText="Password"
+                                       prefHeight="40"
+                                       maxWidth="Infinity"/>
+
+
+                        <!-- CONFIRM PASSWORD -->
+
+                        <PasswordField fx:id="confirmPasswordField"
+                                       promptText="Confirm Password"
+                                       prefHeight="40"
+                                       maxWidth="Infinity"/>
+
+
+                        <!-- ROLE -->
+
+                        <ComboBox fx:id="roleBox"
+                                  promptText="Select Role"
+                                  prefHeight="40"
+                                  maxWidth="Infinity"/>
+
+
+                        <!-- TERMS -->
+
+                        <CheckBox text="I agree to Terms and Privacy Policy"
+                                  wrapText="true"/>
+
+
+                        <!-- CREATE ACCOUNT -->
+
+                        <Button text="Create Account"
+                                prefHeight="45"
+                                maxWidth="Infinity"
+                                onAction="#handleSignup"
+                                style="-fx-background-color:#FF6B35;
+                                       -fx-text-fill:white;
+                                       -fx-font-weight:bold;
+                                       -fx-font-size:14;"/>
+
+
+                        <!-- LOGIN LINK -->
+
+                        <HBox alignment="CENTER">
+
+                            <Label text="Already have an account? "/>
+
+                            <Hyperlink text="Login"
+                                       onAction="#openLogin"/>
+
+                        </HBox>
+
+                    </children>
+
+                </VBox>
+
+            </content>
+
+        </ScrollPane>
+
+    </children>
+
+</HBox>

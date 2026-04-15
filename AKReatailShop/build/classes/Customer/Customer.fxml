@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane prefHeight="700.0" prefWidth="1100.0"
+            style="-fx-background-color: #f8f9fa;"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Customer.CustomerController">
+
+    <!-- 🔹 TOP BAR -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20"
+              style="-fx-background-color: white; -fx-padding: 0 30 0 30; -fx-border-color: #e8e5df; -fx-border-width: 0 0 1 0;"
+              prefHeight="80">
+
+            <VBox alignment="CENTER_LEFT">
+                <Label text="Customers"
+                       style="-fx-font-size: 22; -fx-font-weight: 800;"/>
+                <Label text="Manage your customer database"
+                       style="-fx-text-fill: #8a8a9a;"/>
+            </VBox>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <TextField promptText="Search customers..."
+                       prefWidth="250"
+                       style="-fx-background-radius: 10; -fx-padding: 8;"/>
+
+            <Button text="+ Add Customer"
+                    onAction="#handleAddCustomer"
+                    style="-fx-background-color: #ff6b35; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 10 20;"/>
+        </HBox>
+    </top>
+
+    <!-- 🔹 CENTER -->
+    <center>
+        <HBox spacing="20" style="-fx-padding: 20;">
+
+            <!-- 🔸 LEFT TABLE -->
+            <VBox spacing="15" HBox.hgrow="ALWAYS">
+
+                <HBox spacing="10">
+                    <Button text="📤 Export"
+                            style="-fx-background-color: white; -fx-border-color: #e8e5df; -fx-border-radius: 8;"/>
+                    <Button text="📲 Bulk Message"
+                            style="-fx-background-color: white; -fx-border-color: #e8e5df; -fx-border-radius: 8;"/>
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <ComboBox promptText="All Tiers"
+                              prefWidth="150"
+                              style="-fx-background-color: white;"/>
+                </HBox>
+
+                <TableView fx:id="tblCustomers"
+                           onMouseClicked="#handleRowClick"
+                           VBox.vgrow="ALWAYS"
+                           style="-fx-background-radius: 12; -fx-border-radius: 12;">
+
+                    <columns>
+                        <TableColumn fx:id="colName" text="Customer" prefWidth="200"/>
+                        <TableColumn fx:id="colPhone" text="Phone" prefWidth="150"/>
+                        <TableColumn fx:id="colTier" text="Tier" prefWidth="100"/>
+                        <TableColumn fx:id="colSpent" text="Total Spent" prefWidth="120"/>
+                    </columns>
+
+                </TableView>
+
+            </VBox>
+
+            <!-- 🔸 RIGHT DETAIL PANEL -->
+            <VBox fx:id="detailPanel"
+                  visible="false"
+                  prefWidth="380"
+                  spacing="20"
+                  style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-border-color: #e8e5df; -fx-border-radius: 15;">
+
+                <!-- PROFILE -->
+                <HBox spacing="15">
+                    <StackPane>
+                        <Circle radius="30" fill="#ff6b35"/>
+                        <Label fx:id="lblInitials"
+                               text="AS"
+                               style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold;"/>
+                    </StackPane>
+
+                    <VBox spacing="2">
+                        <Label fx:id="lblName"
+                               text="Name"
+                               style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+                        <Label fx:id="lblPhone"
+                               text="Phone"
+                               style="-fx-text-fill: #8a8a9a;"/>
+                        <Label fx:id="lblTierBadge"
+                               text="★ GOLD MEMBER"
+                               style="-fx-background-color: #fff4e5; -fx-text-fill: #ff6b35; -fx-padding: 2 8; -fx-background-radius: 5; -fx-font-size: 11;"/>
+                    </VBox>
+                </HBox>
+
+                <!-- STATS -->
+                <HBox spacing="10">
+
+                    <VBox alignment="CENTER"
+                          HBox.hgrow="ALWAYS"
+                          style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 10;">
+                        <Label fx:id="lblSpentDetail"
+                               text="₹0"
+                               style="-fx-font-weight: 800;"/>
+                        <Label text="Spent"
+                               style="-fx-font-size: 10; -fx-text-fill: #8a8a9a;"/>
+                    </VBox>
+
+                    <VBox alignment="CENTER"
+                          HBox.hgrow="ALWAYS"
+                          style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 10;">
+                        <Label fx:id="lblPurchases"
+                               text="0"
+                               style="-fx-font-weight: 800;"/>
+                        <Label text="Purchases"
+                               style="-fx-font-size: 10; -fx-text-fill: #8a8a9a;"/>
+                    </VBox>
+
+                </HBox>
+
+                <!-- PROGRESS -->
+                <VBox spacing="8">
+                    <HBox>
+                        <Label text="Tier Progress"
+                               style="-fx-font-weight: bold; -fx-font-size: 12;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="Progress"
+                               style="-fx-text-fill: #8a8a9a;"/>
+                    </HBox>
+
+                    <ProgressBar fx:id="progTier"
+                                 progress="0.5"
+                                 prefHeight="10"
+                                 maxWidth="Infinity"/>
+                </VBox>
+
+                <!-- ADDRESS -->
+                <VBox spacing="10"
+                      style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 10;">
+                    <Label text="ADDRESS / NOTES"
+                           style="-fx-font-size: 10; -fx-font-weight: bold; -fx-text-fill: #8a8a9a;"/>
+
+                    <Label fx:id="lblAddress"
+                           text="Address"
+                           wrapText="true"/>
+
+                    <Label fx:id="lblNotes"
+                           text="Notes"
+                           style="-fx-text-fill: #8a8a9a; -fx-font-size: 11;"/>
+                </VBox>
+
+                <!-- ACTION BUTTONS -->
+                <HBox spacing="10">
+
+                    <Button text="🧾 New Bill"
+                            onAction="#handleNewBill"
+                            HBox.hgrow="ALWAYS"
+                            maxWidth="Infinity"
+                            style="-fx-background-color: #ff6b35; -fx-text-fill: white; -fx-padding: 10;"/>
+
+                    <Button text="📲 WhatsApp"
+                            onAction="#handleWhatsapp"
+                            HBox.hgrow="ALWAYS"
+                            maxWidth="Infinity"
+                            style="-fx-background-color: white; -fx-border-color: #ff6b35; -fx-text-fill: #ff6b35; -fx-padding: 10;"/>
+                </HBox>
+
+            </VBox>
+
+        </HBox>
+    </center>
+
+</BorderPane>

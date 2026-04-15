@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefWidth="1200" prefHeight="750"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Payment.PaymentController"
+            style="-fx-background-color:#F8F9FA;">
+
+    <!-- 🔹 TOP BAR -->
+    <top>
+        <HBox spacing="20" alignment="CENTER_LEFT"
+              style="-fx-background-color:white; -fx-padding:15; -fx-border-color:#E5E5E5;">
+            
+            <VBox>
+                <Label text="Payments">
+                    <font><Font size="20"/></font>
+                </Label>
+                <Label text="Today Collection Overview" style="-fx-text-fill:gray;"/>
+            </VBox>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <TextField fx:id="searchField" promptText="Search transactions..."
+                       prefWidth="250"/>
+
+            <Button text="+ Record Payment"
+                    onAction="#handleAddPayment"
+                    style="-fx-background-color:#FF6B35; -fx-text-fill:white;"/>
+        </HBox>
+    </top>
+
+    <!-- 🔹 CENTER CONTENT -->
+    <center>
+        <VBox spacing="20" style="-fx-padding:20;">
+
+            <!-- KPI CARDS -->
+            <HBox spacing="15">
+                
+                <VBox style="-fx-background-color:white; -fx-padding:15; -fx-background-radius:10;" HBox.hgrow="ALWAYS">
+                    <Label text="₹84,320" style="-fx-font-size:18; -fx-font-weight:bold;"/>
+                    <Label text="Today's Collection"/>
+                </VBox>
+
+                <VBox style="-fx-background-color:white; -fx-padding:15; -fx-background-radius:10;" HBox.hgrow="ALWAYS">
+                    <Label text="28" style="-fx-font-size:18; -fx-font-weight:bold;"/>
+                    <Label text="Transactions"/>
+                </VBox>
+
+                <VBox style="-fx-background-color:white; -fx-padding:15; -fx-background-radius:10;" HBox.hgrow="ALWAYS">
+                    <Label text="3" style="-fx-font-size:18; -fx-font-weight:bold;"/>
+                    <Label text="Pending Dues"/>
+                </VBox>
+
+                <VBox style="-fx-background-color:white; -fx-padding:15; -fx-background-radius:10;" HBox.hgrow="ALWAYS">
+                    <Label text="₹3,011" style="-fx-font-size:18; -fx-font-weight:bold;"/>
+                    <Label text="Avg Transaction"/>
+                </VBox>
+
+            </HBox>
+
+            <!-- PAYMENT MODE -->
+            <VBox style="-fx-background-color:white; -fx-padding:15; -fx-background-radius:10;">
+                <Label text="Payment Mode Split"/>
+
+                <Label text="UPI - 51%"/>
+                <ProgressBar progress="0.51"/>
+
+                <Label text="Cash - 33%"/>
+                <ProgressBar progress="0.33"/>
+
+                <Label text="Card - 16%"/>
+                <ProgressBar progress="0.16"/>
+            </VBox>
+
+            <!-- TABLE -->
+            <VBox style="-fx-background-color:white; -fx-padding:15; -fx-background-radius:10;" VBox.vgrow="ALWAYS">
+                <Label text="Recent Transactions"/>
+
+                <TableView fx:id="tblPayments" VBox.vgrow="ALWAYS">
+
+                    <columns>
+                        <TableColumn fx:id="colBill" text="Bill #" prefWidth="100"/>
+                        <TableColumn fx:id="colCustomer" text="Customer" prefWidth="150"/>
+                        <TableColumn fx:id="colItems" text="Items" prefWidth="100"/>
+                        <TableColumn fx:id="colMethod" text="Method" prefWidth="120"/>
+                        <TableColumn fx:id="colAmount" text="Amount" prefWidth="120"/>
+                        <TableColumn fx:id="colTime" text="Time" prefWidth="100"/>
+                        <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+                    </columns>
+
+                </TableView>
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

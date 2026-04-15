@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #f0ede8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Product.ProductManagementController">
+   
+   <left>
+      <VBox prefWidth="230.0" spacing="10.0" style="-fx-background-color: #1c1c24;">
+         <padding><Insets bottom="20.0" left="15.0" right="15.0" top="20.0" /></padding>
+         <children>
+            <Label text="Ak Retail Shop" textFill="#ff6b35">
+               <font><Font name="System Bold" size="20.0" /></font>
+            </Label>
+            <Separator opacity="0.1" />
+            <Button maxWidth="Infinity" style="-fx-background-color: transparent;" text="Dashboard" textFill="#9a9aaa" />
+            <Button maxWidth="Infinity" style="-fx-background-color: #ff6b352e;" text="Products" textFill="#ff9a3c">
+               <font><Font name="System Bold" size="13.0" /></font>
+            </Button>
+            <Button maxWidth="Infinity" style="-fx-background-color: transparent;" text="Sales / POS" textFill="#9a9aaa" />
+         </children>
+      </VBox>
+   </left>
+
+   <center>
+      <VBox spacing="15.0">
+         <padding><Insets bottom="20.0" left="20.0" right="20.0" top="20.0" /></padding>
+         <children>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <VBox>
+                     <Label text="Product Management" textFill="#1c1c24">
+                        <font><Font name="System Bold" size="18.0" /></font>
+                     </Label>
+                     <Label text="Manage your mobile inventory" textFill="#8a8a9a" />
+                  </VBox>
+               </children>
+            </HBox>
+
+            <HBox spacing="12.0">
+               <children>
+                  <VBox prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #e8e5df; -fx-border-radius: 12;">
+                     <padding><Insets bottom="15.0" left="15.0" right="15.0" top="15.0" /></padding>
+                     <Label text="TOTAL PRODUCTS" textFill="#8a8a9a"><font><Font size="10.0" /></font></Label>
+                     <Label fx:id="totalProductsLabel" text="248" textFill="#1c1c24"><font><Font name="System Bold" size="22.0" /></font></Label>
+                  </VBox>
+               </children>
+            </HBox>
+
+            <TableView fx:id="productTable" style="-fx-background-radius: 10; -fx-border-radius: 10;" VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn fx:id="nameCol" prefWidth="250.0" text="PRODUCT" />
+                  <TableColumn fx:id="brandCol" prefWidth="120.0" text="BRAND" />
+                  <TableColumn fx:id="priceCol" prefWidth="130.0" text="PRICE (₹)" />
+                  <TableColumn fx:id="stockCol" prefWidth="90.0" text="STOCK" />
+                  <TableColumn fx:id="statusCol" prefWidth="110.0" text="STATUS" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

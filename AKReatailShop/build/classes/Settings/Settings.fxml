@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Settings.SettingsController"
+            prefWidth="1200" prefHeight="800"
+            style="-fx-background-color:#F8F7F3;">
+
+    <!-- TOP -->
+    <top>
+        <HBox spacing="15" alignment="CENTER_LEFT"
+              style="-fx-background-color:white; -fx-padding:15;">
+
+            <VBox HBox.hgrow="ALWAYS">
+                <Label text="Settings"
+                       style="-fx-font-size:22; -fx-font-weight:bold;"/>
+                <Label text="Store configuration & preferences"
+                       style="-fx-text-fill:#8A8A93;"/>
+            </VBox>
+
+            <TextField fx:id="searchField"
+                       promptText="Search settings..."
+                       prefWidth="250"/>
+
+            <Button text="Save Changes"
+                    onAction="#handleSaveAll"
+                    style="-fx-background-color:#FF6B35; -fx-text-fill:white;"/>
+        </HBox>
+    </top>
+
+    <!-- CENTER -->
+    <center>
+        <ScrollPane fitToWidth="true">
+            <content>
+
+                <GridPane hgap="20" vgap="20" style="-fx-padding:20;">
+
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50"/>
+                        <ColumnConstraints percentWidth="50"/>
+                    </columnConstraints>
+
+                    <!-- LEFT -->
+                    <VBox spacing="20" GridPane.columnIndex="0">
+
+                        <!-- Store Info -->
+                        <VBox spacing="10"
+                              style="-fx-background-color:white; -fx-padding:20; -fx-background-radius:10;">
+
+                            <Label text="Store Information"
+                                   style="-fx-font-size:16; -fx-font-weight:bold;"/>
+
+                            <TextField fx:id="storeName" promptText="Store Name"/>
+                            <TextField fx:id="gst" promptText="GSTIN"/>
+                            <TextField fx:id="phone" promptText="Phone"/>
+                            <TextField fx:id="email" promptText="Email"/>
+                            <TextField fx:id="address" promptText="Address"/>
+
+                            <Button text="Save Store Info"
+                                    onAction="#handleSaveStore"
+                                    style="-fx-background-color:#FF6B35; -fx-text-fill:white;"/>
+                        </VBox>
+
+                        <!-- Billing -->
+                        <VBox spacing="10"
+                              style="-fx-background-color:white; -fx-padding:20; -fx-background-radius:10;">
+
+                            <Label text="Billing Settings"
+                                   style="-fx-font-size:16; -fx-font-weight:bold;"/>
+
+                            <CheckBox fx:id="autoPrint" text="Auto Print Bill"/>
+                            <CheckBox fx:id="whatsapp" text="Send WhatsApp Bill"/>
+                            <CheckBox fx:id="gstBreak" text="GST Breakdown"/>
+                            <CheckBox fx:id="loyalty" text="Loyalty Points"/>
+                        </VBox>
+
+                    </VBox>
+
+                    <!-- RIGHT -->
+                    <VBox spacing="20" GridPane.columnIndex="1">
+
+                        <!-- Staff -->
+                        <VBox spacing="10"
+                              style="-fx-background-color:white; -fx-padding:20; -fx-background-radius:10;">
+
+                            <Label text="Staff Management"
+                                   style="-fx-font-size:16; -fx-font-weight:bold;"/>
+
+                            <ListView fx:id="staffList" prefHeight="200"/>
+
+                            <Button text="+ Add Staff"
+                                    onAction="#handleAddStaff"
+                                    style="-fx-background-color:#FF6B35; -fx-text-fill:white;"/>
+                        </VBox>
+
+                        <!-- System -->
+                        <VBox spacing="10"
+                              style="-fx-background-color:white; -fx-padding:20; -fx-background-radius:10;">
+
+                            <Label text="System Settings"
+                                   style="-fx-font-size:16; -fx-font-weight:bold;"/>
+
+                            <CheckBox fx:id="darkMode" text="Dark Mode"/>
+                            <CheckBox fx:id="backup" text="Daily Backup"/>
+                            <CheckBox fx:id="twoFactor" text="2FA Login"/>
+                        </VBox>
+
+                    </VBox>
+
+                </GridPane>
+
+            </content>
+        </ScrollPane>
+    </center>
+
+</BorderPane>
