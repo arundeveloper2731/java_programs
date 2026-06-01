@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript using DOM</title>
+    <style>
+        .menu{
+            width: 25%;
+            padding: 20px;
+            margin: 10px;
+            border: 2px solid black;
+            align-items: center;
+            display: grid;
+            justify-content: center;
+            margin-top: 10%;
+            margin-left: 30%;
+            
+        }
+        input{
+            max-width: fit-content;
+        }
+        button{
+            padding: 10px
+        }
+         #box {
+            width: 250px;
+            padding: 20px;
+            border: 2px solid black;
+            margin-top: 10px;
+            margin-left: 30%;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <label for="">ENter Text</label>
+        <input type="text"  id="textInput">
+        <br><br>
+
+        <label for="" >Enter 1st Number  : </label>
+        <input type="text" id="num1">
+<br><br>
+        <label for="" >Enter 2nd Number  : </label>
+        <input type="text" id="num2">
+<br><br>
+
+        <button onclick="readText()">1.Read Text </button>
+        <br>
+        <button onclick="addTwoNum()">2.Add Two Numbers </button>
+        <br>
+        <button onclick="css()">3.change css </button>
+        <br>
+        <button onclick="exit()">4.Exit </button>
+        <br>
+
+    </div>
+    <div id="box">
+        Result will appear here
+    </div>
+
+     <script>
+
+        function readText() {
+            let text = document.getElementById("textInput").value;
+            document.getElementById("box").innerHTML =
+                "Text from DOM: " + text;
+        }
+
+        function addTwoNum() {
+            let n1 = Number(document.getElementById("num1").value);
+            let n2 = Number(document.getElementById("num2").value);
+
+            let sum = n1 + n2;
+
+            document.getElementById("box").innerHTML =
+                "Sum = " + sum;
+        }
+
+        function css() {
+            let box = document.getElementById("box");
+
+            box.style.backgroundColor = "yellow";
+            box.style.color = "red";
+            box.style.fontSize = "25px";
+            box.style.borderRadius = "10px";
+
+            box.innerHTML = "CSS Changed Successfully!";
+        }
+
+        function exit() {
+            document.getElementById("box").innerHTML =
+                "Program Exited!";
+            
+            document.body.innerHTML =
+                "<h1>Program Exited</h1>";
+        }
+
+    </script>
+    
+</body>
+</html>

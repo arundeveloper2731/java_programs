@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Driven CSS Operations</title>
+    <style>
+        .box{
+            height:100px;
+            width:100px;
+            background:orange;
+            margin:20px;
+        }
+
+        #content{
+            text-align:center;
+        }
+
+        h2{
+            font-size:20px;
+        }
+
+        button{
+            margin:5px;
+            padding:8px 15px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>MENU - CSS OPERATIONS</h1>
+
+<button onclick="changeColor()">1. Change Color</button>
+<button onclick="increaseFont()">2. Increase Font Size</button>
+<button onclick="decreaseFont()">3. Decrease Font Size</button>
+<button onclick="toggleElement()">4. Hide / Show</button>
+<button onclick="exitProgram()">5. Exit</button>
+
+<div id="content">
+    <div class="box" id="box"></div>
+
+    <h2 id="text">Welcome to JavaScript</h2>
+</div>
+
+<script>
+
+let count = 0;
+let size = 20;
+
+function changeColor() {
+
+    count++;
+
+    let box = document.getElementById("box");
+
+    if(count % 5 === 0){
+        box.style.background = "blue";
+    }
+    else if(count % 2 === 0){
+        box.style.background = "green";
+    }
+    else{
+        box.style.background = "red";
+    }
+}
+
+function increaseFont(){
+    size += 5;
+    document.getElementById("text").style.fontSize = size + "px";
+}
+
+function decreaseFont(){
+    if(size > 5){
+        size -= 5;
+        document.getElementById("text").style.fontSize = size + "px";
+    }
+}
+
+function toggleElement(){
+
+    let content = document.getElementById("content");
+
+    if(content.style.display === "none"){
+        content.style.display = "block";
+    }
+    else{
+        content.style.display = "none";
+    }
+}
+
+function exitProgram(){
+    document.body.innerHTML = "<h1>Program Exited</h1>";
+}
+
+</script>
+
+</body>
+</html>
